@@ -2,8 +2,10 @@ from typing import TYPE_CHECKING
 import uuid
 from sqlmodel import SQLModel, Field, Relationship
 
+
 if TYPE_CHECKING:
     from ._team import Team
+    from ._trainer import Trainer
 
 
 class Player(SQLModel, table=True):
@@ -16,7 +18,20 @@ class Player(SQLModel, table=True):
     )
     name: str
     age: int
+    weight: int
+    height: float
     salary: float
+    posicion: str
+    pac: float
+    sho: float
+    pas: float
+    dri: float
+    defe: float
+    phy: float
+    goalkeeping: float  
 
     team_id: uuid.UUID | None = Field(default=None, foreign_key="team.team_id")
     team: "Team" = Relationship(back_populates="players")
+
+    trainer_id: uuid.UUID | None = Field(default=None, foreign_key="trainer.trainer_id")
+    trainer: "Trainer" = Relationship(back_populates="players")
