@@ -28,7 +28,7 @@ class Player(SQLModel, table=True):
     dri: float
     defe: float
     phy: float
-    goalkeeping: float  
+    goalkeeping: float
 
     team_id: uuid.UUID | None = Field(default=None, foreign_key="team.team_id")
     team: "Team" = Relationship(back_populates="players")

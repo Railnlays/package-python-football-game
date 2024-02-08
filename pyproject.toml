@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "football-game"
-version = "0.1.1"
+version = "0.1.2"
 description = "package python football gam"
 authors = ["Julio Martinez del Pino <juliomdp92@gmail.com>"]
 readme = "README.md"
@@ -10,6 +10,7 @@ python = ">=3.9,<3.13"
 sqlmodel = "0.0.*"
 python-decouple = "3.8"
 psycopg2-binary = "2.9.*"
+pandas = "^2.2.0"
 
 [tool.poetry.group.dev.dependencies]
 coverage = { extras = ["toml"], version = "7.4.*" }
