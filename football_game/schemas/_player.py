@@ -21,7 +21,7 @@ class Player(SQLModel, table=True):
     weight: int
     height: float
     salary: float
-    posicion: str
+    position: str
     pac: float
     sho: float
     pas: float

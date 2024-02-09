@@ -1,7 +1,7 @@
 import pandas as pd
-from pathlib import Path
+from sqlmodel import SQLModel
 
-
+class PlayerCSVToDB(SQLModel, table=True):
 def create_csv(
     csv_name: str,
     header_1: str,
@@ -46,9 +46,9 @@ def create_csv(
 
     df = pd.DataFrame(columns=headers)
 
-    csv_file_path = Path(csv_name)
+    csv_name = "football_game/schemas/test_player.csv"
 
-    df.to_csv(csv_file_path, index=False)
+    df.to_csv(csv_name, index=False)
 
 
 def create_player(df, player_data: dict, csv_file_path: str):
@@ -85,9 +85,9 @@ new_player_data = {
 }
 
 # csv PATH
-csv_file_path = "test_player.csv"
+csv_file_path = "football_game/schemas/test_player.csv"
 
-"""create_csv(
+create_csv(
     csv_file_path,
     "name",
     "age",
@@ -102,7 +102,7 @@ csv_file_path = "test_player.csv"
     "defe",
     "phy",
     "goalkeeping",
-)"""
+)
 
 df = pd.read_csv(csv_file_path)
 create_player(df, player_data=new_player_data, csv_file_path=csv_file_path)
