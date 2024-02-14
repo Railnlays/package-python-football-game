@@ -15,9 +15,7 @@ def main():
         
         csv_name = "football_game/schemas/test_player.csv"
 
-        PlayerCSVToDB().create_csv(
-            csv_name, 
-            "name",
+        headers = ["name",
             "age",
             "weight",
             "height",
@@ -29,29 +27,34 @@ def main():
             "dri",
             "defe",
             "phy",
-            "goalkeeping",
+            "goalkeeping"]
+        
+        PlayerCSVToDB.create_csv(
+            csv_name, 
+            headers,
         )
 
-        with open(csv_name, newline="") as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                row["name"] = str(row["name"])
-                row["age"] = int(row["age"])
-                row["weight"] = int(row["weight"])
-                row["height"] = float(row["height"])
-                row["salary"] = float(row["salary"])
-                row["position"] = str(row["position"])
-                row["pac"] = float(row["pac"])
-                row["sho"] = float(row["sho"])
-                row["pas"] = float(row["pas"])
-                row["dri"] = float(row["dri"])
-                row["defe"] = float(row["defe"])
-                row["phy"] = float(row["phy"])
-                row["goalkeeping"] = float(row["goalkeeping"])
+        player_data = [
+            "Carlos",
+            25,
+            70,
+            1.75,
+            100000,
+            "Forward",
+            85,
+            90,
+            80,
+            85,
+            40,
+            75,
+            0
+        ]
+        PlayerCSVToDB.create_player(
+            csv_name,
+            player_data
+        )
 
-                player = Player(**row)
-                session.add(player)
-
+        session.add()
         session.commit()
         print("Data inserted successfully!")
 
