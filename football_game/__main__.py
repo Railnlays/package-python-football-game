@@ -1,4 +1,3 @@
-import csv
 from decouple import config
 from sqlmodel import create_engine, SQLModel, Session
 from sqlmodel import Session
@@ -12,10 +11,56 @@ def main():
     SQLModel.metadata.create_all(engine)
 
     with Session(engine) as session:
-        
-        csv_name = "football_game/schemas/test_player.csv"
+        """team_csv_name = "football_game/schemas/teams.csv"
 
-        headers = ["name",
+        team_headers = [
+            "team_id",
+            "name",
+            "budget",
+        ]
+
+        team_data = Team(
+            name="Real Madrid",
+            budget=99999
+        )
+
+        Team.create_team(
+            team_data,
+            team_csv_name,
+            team_headers,
+            engine
+        )
+
+        trainer_csv_name = "football_game/schemas/trainers.csv"
+
+        trainer_headers = [
+            "trainer_id",
+            "name",
+            "age",
+            "salary",
+            "team_id"
+        ]
+
+        trainer_data = Trainer(
+            name="Ancelotti",
+            age=59,
+            salary=8491,
+            budget=99999,
+            #team=team
+        )
+
+        Trainer.create_trainer(
+            trainer_data,
+            trainer_csv_name,
+            trainer_headers,
+            engine
+        )"""
+
+        player_csv_name = "football_game/schemas/players.csv"
+
+        player_headers = [
+            "player_id",
+            "name",
             "age",
             "weight",
             "height",
@@ -27,36 +72,30 @@ def main():
             "dri",
             "defe",
             "phy",
-            "goalkeeping"]
-        
-        PlayerCSVToDB.create_csv(
-            csv_name, 
-            headers,
-        )
-
-        player_data = [
-            "Carlos",
-            25,
-            70,
-            1.75,
-            100000,
-            "Forward",
-            85,
-            90,
-            80,
-            85,
-            40,
-            75,
-            0
+            "goalkeeping",
+            "team_id",
+            "trainer_id",
         ]
-        PlayerCSVToDB.create_player(
-            csv_name,
-            player_data
+
+        player_data = Player(
+            name="Kepa Arrizabalaga",
+            age=28,
+            weight=88,
+            height=1.88,
+            salary=9000000,
+            position="Goalkeeper",
+            pac=33.5,
+            sho=24.33,
+            pas=41.67,
+            dri=43.83,
+            defe=18.4,
+            phy=41,
+            goalkeeping=85,
+            # team=team,
+            # trainer=trainer,
         )
 
-        session.add()
-        session.commit()
-        print("Data inserted successfully!")
+        Player.create_player(player_data, player_csv_name, player_headers, engine)
 
 
 if __name__ == "__main__":
