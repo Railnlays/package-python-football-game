@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "football-game"
-version = "0.1.5"
+version = "0.1.6"
 description = "package python football game"
 authors = ["Julio Martinez del Pino <juliomdp92@gmail.com>"]
 readme = "README.md"

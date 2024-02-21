@@ -11,7 +11,7 @@ def main():
     SQLModel.metadata.create_all(engine)
 
     with Session(engine) as session:
-        """team_csv_name = "football_game/schemas/teams.csv"
+        team_csv_name = "football_game/schemas/teams.csv"
 
         team_headers = [
             "team_id",
@@ -24,12 +24,12 @@ def main():
             budget=99999
         )
 
-        Team.create_team(
+        """Team.create_team(
             team_data,
             team_csv_name,
             team_headers,
             engine
-        )
+        )"""
 
         trainer_csv_name = "football_game/schemas/trainers.csv"
 
@@ -46,10 +46,10 @@ def main():
             age=59,
             salary=8491,
             budget=99999,
-            #team=team
+            team=team_data
         )
 
-        Trainer.create_trainer(
+        """Trainer.create_trainer(
             trainer_data,
             trainer_csv_name,
             trainer_headers,
@@ -78,7 +78,7 @@ def main():
         ]
 
         player_data = Player(
-            name="Kepa Arrizabalaga",
+            name="Carvajal",
             age=28,
             weight=88,
             height=1.88,
@@ -91,8 +91,8 @@ def main():
             defe=18.4,
             phy=41,
             goalkeeping=85,
-            # team=team,
-            # trainer=trainer,
+            team=team_data,
+            trainer=trainer_data,
         )
 
         Player.create_player(player_data, player_csv_name, player_headers, engine)
