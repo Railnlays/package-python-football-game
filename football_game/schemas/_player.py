@@ -15,7 +15,7 @@ class Player(SQLModel, table=True):
         primary_key=True,
         unique=True,
         index=True,
-        sa_column_kwargs={"comment": "Unique identifier for the player"},
+        sa_column_kwargs={"comment": "Unique identifier for the playe"},
     )
     name: str
     age: int
